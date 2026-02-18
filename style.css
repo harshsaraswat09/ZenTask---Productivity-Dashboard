@@ -59,6 +59,7 @@ section.allElems{
     flex-wrap: wrap;
     align-items: flex-start;
     gap: 40px;
+    position: absolute;
 
 }
 
@@ -70,6 +71,7 @@ section.allElems{
     overflow: hidden;
     position: relative;
     transition: all ease 0.2s;
+    cursor: pointer;
 }
 
 .elem img{
@@ -97,4 +99,21 @@ section.allElems{
     padding: 40px;
     font-size: 60px;
     display: none;
+    position: absolute;
+}
+
+.back{
+    position: absolute;
+    right: 5%;
+    background-color: red;
+    border-radius: 10px;
+    padding: 10px 15px;
+    border: none;
+    font-size: 20px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.back:active{
+    scale: 0.97;
 }
