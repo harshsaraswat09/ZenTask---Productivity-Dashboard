@@ -16,7 +16,7 @@ function openfeatures() {
     });
   });
 }
-openfeatures()
+openfeatures();
 
 function todoList() {
   var currentTask = [];
@@ -74,39 +74,57 @@ function todoList() {
   });
 }
 
-todoList()
+todoList();
 
 function dailyPlanner() {
-    var dayPlanner = document.querySelector('.day-planner')
+  var dayPlanner = document.querySelector(".day-planner");
 
-    var dayPlanData = JSON.parse(localStorage.getItem('dayPlanData')) || {}
+  var dayPlanData = JSON.parse(localStorage.getItem("dayPlanData")) || {};
 
-    var hours = Array.from({ length: 18 }, (_, idx) => `${6 + idx}:00 - ${7 + idx}:00`)
+  var hours = Array.from(
+    { length: 18 },
+    (_, idx) => `${6 + idx}:00 - ${7 + idx}:00`,
+  );
 
+  var wholeDaySum = "";
+  hours.forEach(function (elem, idx) {
+    var savedData = dayPlanData[idx] || "";
 
-    var wholeDaySum = ''
-    hours.forEach(function (elem, idx) {
-
-        var savedData = dayPlanData[idx] || ''
-
-        wholeDaySum = wholeDaySum + `<div class="day-planner-time">
+    wholeDaySum =
+      wholeDaySum +
+      `<div class="day-planner-time">
     <p>${elem}</p>
     <input id=${idx} type="text" placeholder="..." value=${savedData}>
-</div>`
-    })
+</div>`;
+  });
 
-    dayPlanner.innerHTML = wholeDaySum
+  dayPlanner.innerHTML = wholeDaySum;
 
+  var dayPlannerInput = document.querySelectorAll(".day-planner input");
 
-    var dayPlannerInput = document.querySelectorAll('.day-planner input')
+  dayPlannerInput.forEach(function (elem) {
+    elem.addEventListener("input", function () {
+      console.log("hello");
+      dayPlanData[elem.id] = elem.value;
 
-    dayPlannerInput.forEach(function (elem) {
-        elem.addEventListener('input', function () {
-            console.log('hello');
-            dayPlanData[elem.id] = elem.value
-
-            localStorage.setItem('dayPlanData', JSON.stringify(dayPlanData))
-        })
-    })
+      localStorage.setItem("dayPlanData", JSON.stringify(dayPlanData));
+    });
+  });
 }
-dailyPlanner()
+dailyPlanner();
+
+function motivationalQuote() {
+  var motivationQuote = document.querySelector(".motivation-2 h1");
+  var motivationAuthor = document.querySelector(".motivation-3 h2");
+
+  async function fetchQuote() {
+    let response = await fetch("http://api.quotable.io/random");
+    let data = await response.json();
+
+    motivationQuote.innerHTML = data.content;
+    motivationAuthor.innerHTML = data.author;
+  }
+  fetchQuote();
+}
+
+motivationalQuote()
