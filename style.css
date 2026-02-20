@@ -54,13 +54,59 @@ section.allElems{
     height: 100%;
     width: 100%;
     padding: 40px;
-    padding-top: 80px;
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
     gap: 40px;
     position: absolute;
 
+}
+
+.allElems header{
+    height: 280px;
+    width: 100%;
+    background-image: url(https://images.unsplash.com/photo-1717361279773-b2e7ee713d2e?q=80&w=3869&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+    background-size: cover;
+    background-position: center;
+    background-color: var(--ter2);
+    margin-bottom: 10px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding:40px;
+}
+
+header .header1 h1{
+    font-size: 100px;
+    font-weight: 500;
+}
+
+header .header1 h4{
+    font-size: 100px;
+    font-weight: 500;
+}
+
+header .header2 h2{
+    font-size: 60px;
+    font-weight: 500;
+}
+
+header .header2 h4{
+    font-size: 30px;
+    font-weight: 500;
+}
+
+header .header2 h3{
+    font-size: 25px;
+    font-weight: 500;
+}
+
+.allElems .allFeatures{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 40px;
 }
 
 .elem{
@@ -100,6 +146,10 @@ section.allElems{
     font-size: 60px;
     display: none;
     position: absolute;
+
+    top: 0;
+    left: 0;
+    z-index: 999;   
 }
 
 .back{
@@ -482,7 +532,7 @@ section.allElems{
 }
 
 .daily-goals-fullpage {
-    display: block;
+    /* display: block; */
     padding: 30px;
 }
 
