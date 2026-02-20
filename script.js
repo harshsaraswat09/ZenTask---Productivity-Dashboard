@@ -195,3 +195,57 @@ function pomodoroTimer() {
 }
 
 pomodoroTimer();
+
+function dailyGoals() {
+  const goalInput = document.getElementById("goal-input");
+  const addGoalBtn = document.getElementById("add-goal-btn");
+  const goalsList = document.querySelector(".goals-list");
+  const completedCountEl = document.getElementById("completed-count");
+  const totalCountEl = document.getElementById("total-count");
+  const progressPercent = document.getElementById("progress-percent");
+
+  let goals = [];
+
+  function updateProgress() {
+    const completed = goals.filter((g) => g.completed).length;
+    completedCountEl.textContent = completed;
+    totalCountEl.textContent = goals.length;
+
+    const percent =
+      goals.length === 0 ? 0 : Math.round((completed / goals.length) * 100);
+    progressPercent.textContent = percent + "%";
+  }
+
+  function renderGoals() {
+    goalsList.innerHTML = "";
+
+    goals.forEach((goal, index) => {
+      const div = document.createElement("div");
+      div.className = `goal-item ${goal.completed ? "completed" : ""}`;
+
+      div.innerHTML = `
+            <span>${goal.text}</span>
+            <button><i class="ri-check-line"></i></button>
+        `;
+
+      div.querySelector("button").onclick = () => {
+        goals[index].completed = !goals[index].completed;
+        renderGoals();
+        updateProgress();
+      };
+
+      goalsList.appendChild(div);
+    });
+  }
+
+  addGoalBtn.onclick = () => {
+    if (!goalInput.value.trim()) return;
+
+    goals.push({ text: goalInput.value, completed: false });
+    goalInput.value = "";
+    renderGoals();
+    updateProgress();
+  };
+}
+
+dailyGoals()
