@@ -1,4 +1,4 @@
-﻿# ZenTask---Productivity-Dashboard
+﻿# ZenTask-Productivity-Dashboard
 
 # 🚀 Productivity Dashboard
 
@@ -58,21 +58,14 @@ This project helps users manage daily tasks, plan their day, stay motivated, tra
 
 ---
 
-## 📂 Project Structure
-Productivity-Dashboard/
-│
-├── index.html
-├── style.css
-├── script.js
-├── fav/
-├── assets/
-└── README.md
-
-
----
 
 ## ⚙️ How to Run Locally
 
 1. Clone the repository  
    ```bash
    git clone https://github.com/your-username/productivity-dashboard.git
+
+2. Open the project folder 
+   ```bash
+   cd productivity-dashboard
+
