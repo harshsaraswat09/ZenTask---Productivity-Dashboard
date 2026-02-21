@@ -13,6 +13,7 @@ function openfeatures() {
   FullElemPageBackbtn.forEach(function (back) {
     back.addEventListener("click", function () {
       fullElemPage[back.id].style.display = "none";
+      document.body.style.overflow = "auto";
     });
   });
 }
@@ -163,7 +164,7 @@ function pomodoroTimer() {
           session.style.backgroundColor = "var(--blue)";
           totalSeconds = 5 * 60;
         }
-      }, 10);
+      }, 1000);
     } else {
       timerInterval = setInterval(function () {
         if (totalSeconds > 0) {
@@ -177,7 +178,7 @@ function pomodoroTimer() {
           session.style.backgroundColor = "var(--green)";
           totalSeconds = 25 * 60;
         }
-      }, 10);
+      }, 1000);
     }
   }
 
@@ -269,7 +270,7 @@ function weatherFunctionality() {
     var data = null
 
     async function weatherAPICall() {
-        var response = await fetch(`http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}`)
+        var response = await fetch(`https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}`)
         data = await response.json()
 
         header2Temp.innerHTML = `${data.current.temp_c}°C`
@@ -315,3 +316,40 @@ function weatherFunctionality() {
 }
 
 weatherFunctionality()
+
+
+
+function changeTheme() {
+
+    var theme = document.querySelector('.theme')
+    var rootElement = document.documentElement
+
+    var flag = 0
+    theme.addEventListener('click', function () {
+
+        if (flag == 0) {
+            rootElement.style.setProperty('--pri', '#F8F4E1')
+            rootElement.style.setProperty('--sec', '#222831')
+            rootElement.style.setProperty('--ter1', '#948979')
+            rootElement.style.setProperty('--ter2', '#393E46')
+            flag = 1
+        } else if (flag == 1) {
+            rootElement.style.setProperty('--pri', '#F1EFEC')
+            rootElement.style.setProperty('--sec', '#030303')
+            rootElement.style.setProperty('--ter1', '#D4C9BE')
+            rootElement.style.setProperty('--ter2', '#123458')
+            flag = 2
+        } else if (flag == 2) {
+            rootElement.style.setProperty('--pri', '#F8F4E1')
+            rootElement.style.setProperty('--sec', '#381c0a')
+            rootElement.style.setProperty('--ter1', '#FEBA17')
+            rootElement.style.setProperty('--ter2', '#74512D')
+            flag = 0
+        }
+
+    })
+
+
+}
+
+changeTheme()
